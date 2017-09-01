@@ -2,11 +2,8 @@ import React from 'react';
 import {Text, View, Button} from 'react-native';
 
 class UsersScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Users'
-    };
-
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <View>
                 <Text>

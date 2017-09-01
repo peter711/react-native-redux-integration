@@ -1,19 +1,15 @@
 import React from 'react';
-import {addNavigationHelpers} from 'react-navigation';
-import {Provider, connect} from 'react-redux';
-import AppNavigator from './config/routes';
+import {Provider} from 'react-redux';
+
 import configureStore from './config/store';
+import { initializeApp } from './middleware/app';
 
-class App extends React.Component {
-    render() {
-        return (<AppNavigator
-            navigation={addNavigationHelpers({dispatch: this.props.dispatch, state: this.props.nav})}/>);
-    }
-}
+import AppWithNavigationState from './App';
 
-const mapStateToProps = (state) => ({nav: state.nav});
-const AppWithNavigationState = connect(mapStateToProps)(App);
+/* --- App initiliazation --- */
 const store = configureStore();
+store.dispatch(initializeApp());
+/* -------------------------- */
 
 export default class Root extends React.Component {
     render() {

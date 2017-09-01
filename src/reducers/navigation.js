@@ -1,6 +1,12 @@
+import {NavigationActions} from 'react-navigation';
 import AppNavigator from '../config/routes';
 
-const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Home'));
+const initialState = AppNavigator
+    .router
+    .getStateForAction(NavigationActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({routeName: 'Splash'})]
+    }))
 
 export default function (state = initialState, action) {
     const nextState = AppNavigator
