@@ -5,6 +5,7 @@ import {StackNavigator, DrawerNavigator} from 'react-navigation';
 import SplashScreen from '../screens/SplashScreen';
 import HomeScreen from '../screens/HomeScreen';
 import UsersScreen from '../screens/UsersScreen';
+import MapScreen from '../screens/MapScreen';
 
 import DrawerButton from '../components/DrawerButton';
 
@@ -14,6 +15,9 @@ const DrawerNav = new DrawerNavigator({
     },
     Users: {
         screen: UsersScreen
+    },
+    Map: {
+        screen: MapScreen
     }
 }, {
     navigationOptions: ({navigation}) => ({headerLeft: <DrawerButton navigate={navigation.navigate}/>})

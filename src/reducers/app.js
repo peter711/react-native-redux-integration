@@ -1,10 +1,10 @@
 import {INITIALIZING_APP, INITIALIZING_APP_DONE} from '../actions/app';
 
-const initialiState = {
+const initialState = {
     initialized: false
 };
 
-export default function (state = initialiState, action) {
+export default function (state = initialState, action) {
     switch (action.type) {
         case INITIALIZING_APP:
             return {
