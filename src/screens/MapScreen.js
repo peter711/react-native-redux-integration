@@ -8,20 +8,37 @@ import {startWatchGeolocation} from '../middleware/map';
 class MapScreen extends React.Component {
 
     componentDidMount() {
-        this.props.watchCoordinates();
+        this
+            .props
+            .watchCoordinates();
+    }
+
+    renderMapView() {
+        const {coordinates} = this.props;
+        return (
+            <MapView
+                style={styles.map}
+                initialRegion={{
+                latitude: coordinates.latitude,
+                longitude: coordinates.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+            }}>
+                {this.renderCurrentLocationMarker()}
+            </MapView>
+        );
+    }
+
+    renderCurrentLocationMarker() {
+        const {coordinates} = this.props;
+        return (<MapView.Marker coordinate={coordinates}/>);
     }
 
     render() {
+        const {coordinates} = this.props;
         return (
             <View style={styles.container}>
-                <MapView
-                    style={styles.map}
-                    initialRegion={{
-                    latitude: 37.78825,
-                    longitude: -122.4324,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421
-                }}/>
+                {coordinates && this.renderMapView()}
             </View>
         );
     }
